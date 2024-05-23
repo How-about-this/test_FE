@@ -20,7 +20,7 @@ const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
   }, [isAuthenticated, setIsAuthenticated]);
 
   const handleLoginCheck = () => {
-    window.location.href = "http://localhost:8080/oauth2/authorization/kakao";
+    window.location.href = "api/oauth2/authorization/kakao";
   };
 
   if (!isAuthenticated) {
