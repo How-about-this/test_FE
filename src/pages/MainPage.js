@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getData } from "../api/api";
+import WeatherComponent from "../components/WeatherComponent";
 
 const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
   const [user, setUser] = useState(null);
@@ -33,6 +34,7 @@ const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
           onClick={handleLoginCheck}
           style={{ cursor: "pointer" }}
         />
+        <WeatherComponent />
       </div>
     );
   }
