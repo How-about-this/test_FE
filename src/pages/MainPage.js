@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getData } from "../api/api";
-import WeatherComponent from "../components/WeatherComponent";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,6 +25,10 @@ const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
     window.location.href = "api/oauth2/authorization/kakao";
   };
 
+  const handleWeather = () => {
+    navigate("/weather");
+  }
+
   if (!isAuthenticated) {
     return (
       <div>
@@ -34,7 +39,9 @@ const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
           onClick={handleLoginCheck}
           style={{ cursor: "pointer" }}
         />
-        <WeatherComponent />
+        <div>
+          <button onClick={handleWeather}>날씨 페이지</button>
+        </div>
       </div>
     );
   }
