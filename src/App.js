@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import OAuth2RedirectHandler from "./handler/OAuth2RedirectHandler";
 import WeatherComponent from "./components/WeatherComponent";
 import WeatherPage from "./pages/WeatherPage";
+import RedirectPage from "./pages/RedirectPage";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -30,6 +31,12 @@ const App = () => {
           path="/weather"
           element={
             <WeatherPage />
+          }
+        />
+        <Route
+          path="/redirect"
+          element={
+            <RedirectPage />
           }
         />
       </Routes>

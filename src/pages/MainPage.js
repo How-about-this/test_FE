@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getData } from "../api/api";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
   const [user, setUser] = useState(null);
@@ -29,6 +30,19 @@ const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
     navigate("/weather");
   }
 
+  const handleRedirectButton = async (e) => {
+    e.preventDefault();
+    const response = await apiWithoutToken.get("/redirect");
+  }
+
+  const apiWithoutToken = axios.create({
+    baseURL: "/api", // API의 기본 URL 설정
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  
+
   if (!isAuthenticated) {
     return (
       <div>
@@ -41,6 +55,9 @@ const MainPage = ({ isAuthenticated, setIsAuthenticated }) => {
         />
         <div>
           <button onClick={handleWeather}>날씨 페이지</button>
+        </div>
+        <div>
+          <button onClick={handleRedirectButton}>리다이렉트 버튼</button>
         </div>
       </div>
     );
